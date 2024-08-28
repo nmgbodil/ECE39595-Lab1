@@ -25,6 +25,7 @@ void hash_list::insert(int key, float value) {
             current->value = value;
             return;
         }
+        current = current->next;
     }
 
     // Initializing the new node to be inserted at head of list
