@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# Traces Makefile and Main
+trace*
+main*
+Makefile
+test
