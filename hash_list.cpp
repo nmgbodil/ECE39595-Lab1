@@ -51,6 +51,7 @@ std::optional<float> hash_list::get_value(int key) const {
         if (current->key == key) {
             return current->value;
         }
+        current = current->next;
     }
 
     return std::nullopt;
