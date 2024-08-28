@@ -61,7 +61,7 @@ bool hash_list::remove(int key) {
     {
         return false;
     }
-    if (head->value == key)
+    if (head->key == key)
     {
         node* exnode = head;
         head = head->next;
