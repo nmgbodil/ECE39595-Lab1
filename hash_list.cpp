@@ -73,7 +73,7 @@ bool hash_list::remove(int key) {
     }
     while (current->next != nullptr)
     {
-        if (current->next->value == key)
+        if (current->next->key == key)
         {
             node* exnode = current->next;
             current->next = current->next->next;
