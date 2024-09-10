@@ -135,6 +135,7 @@ hash_list::hash_list(const hash_list &other) : size(0), head(nullptr) {
         this->iter_ptr = this->iter_ptr->next;
         current = current->next;
     }
+    this->iter_ptr = this->iter_ptr->next;
 }
 
 hash_list &hash_list::operator=(const hash_list &other) { return *this; }
