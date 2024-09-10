@@ -118,7 +118,21 @@ hash_list::~hash_list() {
  * START Part 2
  *------------------------------------------------------------------------------------*/
 
-hash_list::hash_list(const hash_list &other) {}
+hash_list::hash_list(const hash_list &other) : size(0), head(nullptr) {
+    node* current = other.head;
+    node* current_new = this->head;
+    node* new_node = nullptr;
+    if (current) {
+        this->head = create_node(current->key, current->value);
+        current = current->next;
+    }
+    while (current) {
+        new_node = create_node(current->key, current->value);
+        current_new->next = new_node;
+        current_new = current_new->next;
+        current = current->next;
+    }
+}
 
 hash_list &hash_list::operator=(const hash_list &other) { return *this; }
 
