@@ -120,7 +120,6 @@ hash_list::~hash_list() {
 
 hash_list::hash_list(const hash_list &other) : size(0), head(nullptr) {
     node* current = other.head;
-    node* current_new = nullptr;
     node* new_node = nullptr;
     if (current) {
         this->head = create_node(current->key, current->value);
@@ -128,12 +127,12 @@ hash_list::hash_list(const hash_list &other) : size(0), head(nullptr) {
         current = current->next;
     }
 
-    current_new = this->head;
+    this->iter_ptr = this->head;
     while (current) {
         new_node = create_node(current->key, current->value);
         this->size++;
-        current_new->next = new_node;
-        current_new = current_new->next;
+        this->iter_ptr->next = new_node;
+        this->iter_ptr = this->iter_ptr->next;
         current = current->next;
     }
 }
