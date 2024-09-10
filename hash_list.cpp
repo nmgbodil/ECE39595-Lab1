@@ -149,7 +149,9 @@ void hash_list::increment_iter() {}
 std::optional<std::pair<const int *, float *>> hash_list::get_iter_value() { return std::nullopt; }
 
 
-bool hash_list::iter_at_end() { return false; }
+bool hash_list::iter_at_end() {
+    return !this->iter_ptr;
+}
 /**-----------------------------------------------------------------------------------
  * END Part 2
  *------------------------------------------------------------------------------------*/
