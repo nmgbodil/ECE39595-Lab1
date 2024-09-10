@@ -132,7 +132,7 @@ hash_list::hash_list(const hash_list &other) : size(0), head(nullptr) {
         new_node = create_node(current->key, current->value);
         this->size++;
         this->iter_ptr->next = new_node;
-        this->iter_ptr = this->iter_ptr->next;
+        this->iter_ptr = this->iter_ptr->next; // Use increment_iter to do;
         current = current->next;
     }
     this->iter_ptr = this->iter_ptr->next;
@@ -140,7 +140,9 @@ hash_list::hash_list(const hash_list &other) : size(0), head(nullptr) {
 
 hash_list &hash_list::operator=(const hash_list &other) { return *this; }
 
-void hash_list::reset_iter() {}
+void hash_list::reset_iter() {
+    this->iter_ptr = this->head;
+}
 
 
 void hash_list::increment_iter() {}
