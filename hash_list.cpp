@@ -103,7 +103,7 @@ hash_list::~hash_list() {
             current = current->next;
             delete exnode;
         }
-        delete current;
+        //delete current; //edited code
     }
     head = nullptr;
     size = 0;
@@ -140,6 +140,7 @@ hash_list::hash_list(const hash_list &other) : size(0), head(nullptr) {
 
 hash_list &hash_list::operator=(const hash_list &other) { 
     if (this == &other) return *this; 
+    this->~hash_list(); //newly added line
     hash_list temp = other;
     std::swap(head, temp.head);
     std::swap(size, temp.size);
@@ -161,7 +162,6 @@ void hash_list::increment_iter() {
 
 std::optional<std::pair<const int *, float *>> hash_list::get_iter_value() { 
     if (this->iter_ptr != nullptr) {
-        // Directly construct the optional pair using brace initialization
         return std::optional<std::pair<const int *, float *>>{{&this->iter_ptr->key, &this->iter_ptr->value}};
     }
     return std::nullopt;
