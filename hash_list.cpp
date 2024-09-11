@@ -138,17 +138,34 @@ hash_list::hash_list(const hash_list &other) : size(0), head(nullptr) {
     this->iter_ptr = this->iter_ptr->next;
 }
 
-hash_list &hash_list::operator=(const hash_list &other) { return *this; }
+hash_list &hash_list::operator=(const hash_list &other) { 
+    if (this == &other) return *this; 
+    hash_list temp = other;
+    std::swap(head, temp.head);
+    std::swap(size, temp.size);
+    std::swap(iter_ptr, temp.iter_ptr);
+    return *this;
+    }
 
 void hash_list::reset_iter() {
     this->iter_ptr = this->head;
 }
 
 
-void hash_list::increment_iter() {}
+void hash_list::increment_iter() {
+    if (this->iter_ptr != nullptr){
+        this->iter_ptr = this->iter_ptr->next;
+    }
+}
 
 
-std::optional<std::pair<const int *, float *>> hash_list::get_iter_value() { return std::nullopt; }
+std::optional<std::pair<const int *, float *>> hash_list::get_iter_value() { 
+    if (this->iter_ptr != nullptr) {
+        // Directly construct the optional pair using brace initialization
+        return std::optional<std::pair<const int *, float *>>{{&this->iter_ptr->key, &this->iter_ptr->value}};
+    }
+    return std::nullopt;
+}
 
 
 bool hash_list::iter_at_end() {
