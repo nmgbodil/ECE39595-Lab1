@@ -139,8 +139,7 @@ hash_list::hash_list(const hash_list &other) : size(0), head(nullptr) {
 }
 
 hash_list &hash_list::operator=(const hash_list &other) { 
-    if (this == &other) return *this; 
-    this->~hash_list();  
+    if (this == &other) return *this;  
     hash_list temp = other;
     std::swap(head, temp.head);
     std::swap(size, temp.size);
