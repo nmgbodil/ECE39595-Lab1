@@ -103,7 +103,7 @@ hash_list::~hash_list() {
             current = current->next;
             delete exnode;
         }
-        //delete current; //edited code
+        delete current; //edited code
     }
     head = nullptr;
     size = 0;
