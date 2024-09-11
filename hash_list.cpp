@@ -132,10 +132,9 @@ hash_list::hash_list(const hash_list &other) : size(0), head(nullptr) {
         new_node = create_node(current->key, current->value);
         this->size++;
         this->iter_ptr->next = new_node;
-        this->iter_ptr = this->iter_ptr->next; // Use increment_iter to do;
+        this->increment_iter(); // Use increment_iter to do;
         current = current->next;
     }
-    this->iter_ptr = this->iter_ptr->next;
 }
 
 hash_list &hash_list::operator=(const hash_list &other) { 
